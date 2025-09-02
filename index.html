@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACRY DSE Notes Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="floating-particles"></div>
+    
+    <header class="header">
+        <div class="container">
+            <h1 class="main-title">
+                <span class="cyber-text">ACRY</span>
+                <span class="cyber-text-accent">DSE</span>
+                <span class="cyber-text">NOTES</span>
+                <span class="cyber-text-accent">HUB</span>
+            </h1>
+            <p class="subtitle">因為我唔想DSE Retake第二次 🚀</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <nav class="category-tabs">
+                <button class="tab-button active" data-category="中文">
+                    <span class="tab-icon">📚</span>
+                    <span>中文</span>
+                    <div class="tab-glow"></div>
+                </button>
+                <button class="tab-button" data-category="英文">
+                    <span class="tab-icon">🌍</span>
+                    <span>英文</span>
+                    <div class="tab-glow"></div>
+                </button>
+                <button class="tab-button" data-category="Econ">
+                    <span class="tab-icon">📈</span>
+                    <span>Econ</span>
+                    <div class="tab-glow"></div>
+                </button>
+                <button class="tab-button" data-category="中史">
+                    <span class="tab-icon">📜</span>
+                    <span>中史</span>
+                    <div class="tab-glow"></div>
+                </button>
+            </nav>
+
+            <div class="content-area">
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" placeholder="搜尋筆記內容..." class="search-input">
+                        <span class="search-shortcut">Ctrl+F</span>
+                    </div>
+                </div>
+
+                <!-- Content Sections -->
+                <div class="category-content active" data-category="中文">
+                    <div class="notes-grid" id="notes-中文"></div>
+                </div>
+
+                <div class="category-content" data-category="英文">
+                    <div class="notes-grid" id="notes-英文"></div>
+                </div>
+
+                <div class="category-content" data-category="Econ">
+                    <div class="notes-grid" id="notes-Econ"></div>
+                </div>
+
+                <div class="category-content" data-category="中史">
+                    <div class="notes-grid" id="notes-中史"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © Powered by <span class="footer-highlight">Acry CEO</span> 
+                GitHub <a href="https://github.com/Cryjai" target="_blank" class="footer-link">https://github.com/Cryjai</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Copy Success Notification -->
+    <div class="notification hidden" id="copyNotification">
+        <span class="notification-icon">✅</span>
+        <span class="notification-text">已複製到剪貼板！</span>
+    </div>
+
+    <!-- Add New Note Button (floating) -->
+    <button class="add-note-btn" id="addNoteBtn" title="Add New Note">
+        <span class="add-icon">➕</span>
+        <div class="btn-glow"></div>
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
