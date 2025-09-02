@@ -1600,3 +1600,81 @@ body {
     display: none;
   }
 }
+
+/* 圖片顯示 */
+.image-container {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.note-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #00ffff33;
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.note-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+}
+
+/* YouTube影片顯示 */
+.youtube-container {
+    margin: 1.5rem 0;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #8b5cf6;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.youtube-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* PDF顯示 */
+.file-container {
+    margin: 1rem 0;
+    border: 1px solid #06b6d4;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 400px;
+    background: #1a1a1a;
+}
+
+/* 音頻播放器 */
+.audio-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid #00ffff33;
+}
+
+.audio-player {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    filter: hue-rotate(180deg);
+}
+
+.audio-container p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #00ffff;
+    text-align: center;
+}
