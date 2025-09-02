@@ -160,7 +160,7 @@ function setupEventListeners() {
     // Add note button
     if (addNoteBtn) {
         addNoteBtn.addEventListener('click', () => {
-            showNotification('功能開發中... 請直接修改 app.js 添加新筆記！', 3000);
+            showNotification('只有Acry CEO有權添加新筆記！', 3000);
         });
     }
 
@@ -199,6 +199,30 @@ function parseContent(content) {
     parsed = parsed.replace(/\*([^*]+)\*/g, '<em>$1</em>');
     parsed = parsed.replace(/\n/g, '<br>');
     return parsed;
+}
+
+function renderNoteContent(note) {
+    return `
+        <div class="note-card" data-note-id="${note.id}">
+            <div class="note-header" onclick="toggleNote('${note.id}')">
+                <h3 class="note-title">${note.title}</h3>
+                <div class="note-controls">
+                    <button class="copy-btn" onclick="copyNote('${note.id}')" title="複製筆記">
+                        📋
+                    </button>
+                    <span class="expand-icon">▼</span>
+                </div>
+            </div>
+            <div class="note-content collapsed" id="content-${note.id}">
+                <div class="note-body">
+                    ${parseContent(note.content)}  <!-- 呢度要用parseContent -->
+                </div>
+                <div class="note-tags">
+                    ${note.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 
@@ -895,4 +919,26 @@ document.addEventListener('keydown', (e) => {
             specialEffect.remove();
         }, 2000);
     }
+
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('note-image')) {
+        // Simple lightbox effect
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 10000; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+        `;
+        
+        const img = document.createElement('img');
+        img.src = e.target.src;
+        img.style.cssText = 'max-width: 90%; max-height: 90%; border-radius: 8px;';
+        
+        overlay.appendChild(img);
+        document.body.appendChild(overlay);
+        
+        overlay.onclick = () => document.body.removeChild(overlay);
+    }
+});
+
 });
