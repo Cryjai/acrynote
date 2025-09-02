@@ -180,6 +180,28 @@ function setupEventListeners() {
     });
 }
 
+function parseContent(content) {
+    let parsed = content;
+    // 圖片 inline
+    parsed = parsed.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,
+        '<div class="image-container"><img src="$2" alt="$1" class="note-image" loading="lazy"></div>');
+    // YouTube inline
+    parsed = parsed.replace(/\[youtube:([^\]]+)\]/g,
+        '<div class="youtube-container"><iframe src="https://www.youtube.com/embed/$1" frameborder="0" allowfullscreen class="youtube-video"></iframe></div>');
+    // PDF inline
+    parsed = parsed.replace(/\[file:([^\]]*)\]\(([^)]+)\)/g,
+        '<div class="file-container"><embed src="$2" type="application/pdf" class="pdf-viewer"><p>PDF: <a href="$2" target="_blank">$1</a></p></div>');
+    // Audio inline
+    parsed = parsed.replace(/\[audio:([^\]]*)\]\(([^)]+)\)/g,
+        '<div class="audio-container"><audio controls class="audio-player"><source src="$2" type="audio/mpeg">Your browser does not support audio.</audio><p>🎵 $1</p></div>');
+    // Markdown
+    parsed = parsed.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    parsed = parsed.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    parsed = parsed.replace(/\n/g, '<br>');
+    return parsed;
+}
+
+
 // Switch Category
 function switchCategory(category) {
     if (category === currentCategory) return;
